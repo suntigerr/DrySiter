@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int page = 1;//当前页数
     private PictureLoader mPictureLoader;
     private SisterApi mSisterApi;
+    private SisterTask mSisterTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,36 +49,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initData() {
         mData = new ArrayList<>();
-       new SisterTask(page).execute();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.main_meizi_btn:
-                if (mCurrentPos >9){
-                    mCurrentPos = 0;
+                if (mData != null && !mData.isEmpty()) {
+                    if (mCurrentPos > 9) {
+                        mCurrentPos = 0;
+                    }
+                    mPictureLoader.load(mShowImg, mData.get(mCurrentPos).getUrl());
+                    mCurrentPos++;
                 }
-                mPictureLoader.load(mShowImg, mData.get(mCurrentPos).getUrl());
-                mCurrentPos++;
                 break;
             case R.id.main_meizi_ref_btn:
-                new SisterTask(page).execute();
+                mSisterTask = new SisterTask();
+                mSisterTask.execute();
                 mCurrentPos = 0;
                 page++;
 
         }
     }
-    private class SisterTask extends AsyncTask<Void,Void,ArrayList<Sister>>{
-      private int page;
 
-        public SisterTask(int page) {
-            this.page = page;
+    private class SisterTask extends AsyncTask<Void, Void, ArrayList<Sister>> {
+        public SisterTask() {
         }
 
         @Override
         protected ArrayList<Sister> doInBackground(Void... voids) {
-            return mSisterApi.fetchSister(10,page);
+            return mSisterApi.fetchSister(10, page);
         }
 
         @Override
@@ -85,6 +86,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onPostExecute(sisters);
             mData.clear();
             mData.addAll(sisters);
+            page++;
         }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            mSisterTask = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSisterTask.cancel(true);
     }
 }
