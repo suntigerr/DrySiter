@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <ImageView
         android:id="@+id/main_activity_meizi_im"
-        android:contentDescription="@string/main_img_des"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="83dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/main_img_des"
         app:layout_constraintBottom_toTopOf="@+id/main_meizi_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +23,27 @@
 
     <Button
         android:id="@+id/main_meizi_btn"
-        android:layout_width="163dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="97dp"
-        android:layout_marginBottom="53dp"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="72dp"
         android:contentDescription="@string/main_meizi_btn_des"
         android:text="@string/main_meizi_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_meizi_ref_btn"
         app:layout_constraintTop_toBottomOf="@+id/main_activity_meizi_im" />
+
+    <Button
+        android:id="@+id/main_meizi_ref_btn"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="14dp"
+        android:text="@string/main_meizi_ref_btn_text"
+        app:layout_constraintBottom_toBottomOf="@+id/main_meizi_btn"
+        app:layout_constraintEnd_toStartOf="@+id/main_meizi_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/main_meizi_btn"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

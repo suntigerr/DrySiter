@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DrySister</string>
     <string name="main_meizi_btn_des">切换按钮</string>
-    <string name="main_meizi_btn_text">妹子</string>
     <string name="main_img_des">妹子图片</string>
+    <string name="main_meizi_btn_text">下一个</string>
+    <string name="main_meizi_ref_btn_text">换一批</string>
 </resources>

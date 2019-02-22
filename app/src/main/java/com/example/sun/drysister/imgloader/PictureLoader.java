@@ -1,4 +1,4 @@
-package com.example.sun.drysister;
+package com.example.sun.drysister.imgloader;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -6,17 +6,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import android.print.PrinterId;
 import android.widget.ImageView;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.LogRecord;
 
 /**
  * Description：${DESCRIPTION}
